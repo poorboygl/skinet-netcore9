@@ -1,0 +1,8 @@
+dotnet new sln
+dotnet new webapi -n API -controllers
+dotnet new classlib -n Core
+dotnet new classlib -n Infrastructure
+
+#dotnet new webapi -o API -controllers
+#dotnet new classlib -o Core
+#dotnet new classlib -0 Infrastructure
