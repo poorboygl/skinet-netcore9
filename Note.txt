@@ -6,3 +6,5 @@ dotnet new classlib -n Infrastructure
 #dotnet new webapi -o API -controllers
 #dotnet new classlib -o Core
 #dotnet new classlib -0 Infrastructure
+
+docker compose up -d
