@@ -18,3 +18,6 @@ Cd api
 
  dotnet ef migrations add InitialCreate -s API -p Infrastructure
  dotnet ef database update -s API -p Infrastructure
+
+ ch03
+ Introduction about AddScope AddTransient AddSingleton ch03-03 06:16
