@@ -21,3 +21,5 @@ Cd api
 
  ch03
  Introduction about AddScope AddTransient AddSingleton ch03-03 06:16
+
+ dotnet ef database drop -p Infrastructure -s API
