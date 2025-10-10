@@ -65,12 +65,26 @@ public class ProductsController(IProductRepository repo) : ControllerBase
         if (product == null) return NotFound();
 
         repo.DeleteProduct(product);
-        if(await repo.SaveChangesAsync())
+        if (await repo.SaveChangesAsync())
         {
             return NoContent();
         }
 
         return BadRequest("Problem deleting the product");
+    }
+
+    [HttpGet("brands")]
+    public async Task<ActionResult<IReadOnlyList<string>>> GetBrands()
+    {
+        var brands = await repo.GetProductBrandsAsync();
+        return Ok(brands);
+    }
+
+    [HttpGet("types")]
+    public async Task<ActionResult<IReadOnlyList<string>>> GetTypes()
+    {
+        var types = await repo.GetProductTypesAsync();
+        return Ok(types);
     }
 
     private bool ProductExits(int id)
