@@ -22,6 +22,11 @@ public class SpecificationEvaluator<T> where T : BaseEntity
             query = query.OrderByDescending(spec.OrderByDescending);
         }
 
+        if(spec.IsDistinct)
+        {
+            query = query.Distinct();
+        }
+
         return query;
     }
     
@@ -43,13 +48,18 @@ public class SpecificationEvaluator<T> where T : BaseEntity
             query = query.OrderByDescending(spec.OrderByDescending);
         }
 
-        var selectQUery = query as IQueryable<TResult>;
+        var selectQuery = query as IQueryable<TResult>;
 
-        if(spec.Select != null)
+        if (spec.Select != null)
         {
-            selectQUery = query.Select(spec.Select);
+            selectQuery = query.Select(spec.Select);
+        }
+        
+        if(spec.IsDistinct)
+        {
+            selectQuery = selectQuery?.Distinct();
         }
 
-        return selectQUery ?? query.Cast<TResult>();
+        return selectQuery ?? query.Cast<TResult>();
     }
 }
