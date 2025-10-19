@@ -26,3 +26,6 @@ Cd api
 
  ch06
  https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-9.0
+
+ ch14
+  dotnet ef migrations add IdentityAdded -s API -p Infrastructure
