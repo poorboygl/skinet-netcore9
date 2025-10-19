@@ -23,3 +23,6 @@ Cd api
  Introduction about AddScope AddTransient AddSingleton ch03-03 06:16
 
  dotnet ef database drop -p Infrastructure -s API
+
+ ch06
+ https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-9.0
