@@ -29,3 +29,6 @@ Cd api
 
  ch14
   dotnet ef migrations add IdentityAdded -s API -p Infrastructure
+dotnet ef migrations add AddressAdded -s API -p Infrastructure
+dotnet ef database drop -s API -p Infrastructure
+dotnet ef database update -s API -p Infrastructure
