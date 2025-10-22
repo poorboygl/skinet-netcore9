@@ -1,12 +1,9 @@
-using System.Collections.ObjectModel;
-using System.Security.Claims;
 using API.DTOs;
 using API.Extensions;
 using Core.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
@@ -68,5 +65,27 @@ public class AccountController(SignInManager<AppUser> signInManager) : BaseApiCo
         {
             IsAuthenticated = User.Identity?.IsAuthenticated ?? false
         });
+    }
+
+    [Authorize]
+    [HttpPost("address")]
+    public async Task<ActionResult<Address>> CreateOrUpdateAddress(AddressDto addressDto)
+    {
+        var user = await signInManager.UserManager.GetUserByEmailWithAddress(User);
+
+        if (user.Address == null)
+        {
+            user.Address = addressDto.ToEntity();
+        }
+        else
+        {
+            user.Address.UpdateFromDto(addressDto);
+        }
+
+        var result = await signInManager.UserManager.UpdateAsync(user);
+
+        if (!result.Succeeded) return BadRequest("Problem updating user address");
+
+        return Ok(user.Address.ToDto());
     }
 }
