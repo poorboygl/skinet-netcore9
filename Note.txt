@@ -32,3 +32,7 @@ Cd api
 dotnet ef migrations add AddressAdded -s API -p Infrastructure
 dotnet ef database drop -s API -p Infrastructure
 dotnet ef database update -s API -p Infrastructure
+
+ch16
+dotnet ef migrations add DeliveryMethodsAdded -p Infrastructure -s API
+dotnet tool update dotnet-ef -g
