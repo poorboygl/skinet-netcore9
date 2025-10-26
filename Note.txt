@@ -36,3 +36,8 @@ dotnet ef database update -s API -p Infrastructure
 ch16
 dotnet ef migrations add DeliveryMethodsAdded -p Infrastructure -s API
 dotnet tool update dotnet-ef -g
+
+ch17
+dotnet ef migrations add OrderAggregateAdded -p Infrastructure -s API
+
+$env:DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION=1
