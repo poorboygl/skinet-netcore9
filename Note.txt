@@ -41,3 +41,4 @@ ch17
 dotnet ef migrations add OrderAggregateAdded -p Infrastructure -s API
 
 $env:DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION=1
+setx DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION 1 
