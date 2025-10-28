@@ -42,3 +42,13 @@ dotnet ef migrations add OrderAggregateAdded -p Infrastructure -s API
 
 $env:DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION=1
 setx DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION 1 
+
+ch18
+https://docs.stripe.com/stripe-cli/install
+brew install stripe/stripe-cli/stripe
+
+.\stripe.exe login
+
+.\stripe listen --forward-to https://localhost:5001/api/payments/webhook -e payment_intent.succeeded
+
+whsec_561362383dac5839a1cea9da211ff7111b36b96bda95b9b38ccebe43424e263d
