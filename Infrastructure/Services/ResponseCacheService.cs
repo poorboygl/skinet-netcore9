@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using System.Text.Json;
 using Core.Interfaces;
 using StackExchange.Redis;
@@ -24,8 +25,15 @@ public class ResponseCacheService(IConnectionMultiplexer redis) : IResponseCache
         return cachedResponse;
     }
 
-    public Task RemoveCachePattern(string pattern)
+    public async Task RemoveCachePattern(string pattern)
     {
-        throw new NotImplementedException();
+        var server = redis.GetServer(redis.GetEndPoints().First());
+
+        var keys = server.Keys(database: 1, pattern: $"*{pattern}*").ToArray();
+
+        if (keys.Length != 0)
+        {
+            await _database.KeyDeleteAsync(keys);
+        }
     }
 }
