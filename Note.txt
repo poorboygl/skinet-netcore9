@@ -55,3 +55,8 @@ whsec_561362383dac5839a1cea9da211ff7111b36b96bda95b9b38ccebe43424e263d
 
 ch21
 dotnet ef migrations add RolesAdded -s API -p Infrastructure
+
+ch22
+git reset head^
+git push origin +main
+git push origin --force
